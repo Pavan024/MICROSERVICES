@@ -1,0 +1,19 @@
+server:
+    port: 6123
+spring:
+    application:
+        name: apigateway
+zuul:
+    routes:
+        collegeservices:
+            path: /collegeServices/**
+            url: http://localhost:6598/
+            stripPrefix: false
+        center-service:
+            path: /centerService/**
+            url: http://localhost:6356/
+            stripPrefix: false
+    sensitiveHeaders: Cookie,Set-Cookie
+    host:
+        connect-timeout-millis: 10000
+        socket-timeout-millis: 1000000
